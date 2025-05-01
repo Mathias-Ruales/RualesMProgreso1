@@ -17,6 +17,7 @@ namespace RualesMProgreso1.Models
         [EmailAddress]
         [MaxLength(100, ErrorMessage = "El correo no puede exceder los 100 caracteres.")]
         public string Correo { get; set; }
+        [DataType(DataType.Date)]
         public DateTime fechaVisita { get; set; }
         public bool tieneMascota { get; set; }
 

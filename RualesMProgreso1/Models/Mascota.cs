@@ -16,6 +16,7 @@ namespace RualesMProgreso1.Models
         [Required]
         public string sexo { get; set; }
         [Required]
+        [DataType(DataType.Date)]
         public DateOnly fechaNacimiento { get; set; }
 
         [ForeignKey("DuenoId")]

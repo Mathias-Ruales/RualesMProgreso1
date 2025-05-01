@@ -47,7 +47,7 @@ namespace RualesMProgreso1.Controllers
         // GET: Mascotas/Create
         public IActionResult Create()
         {
-            ViewData["DuenoId"] = new SelectList(_context.Dueno, "ID", "Correo");
+            ViewData["DuenoId"] = new SelectList(_context.Dueno.Where(u=>u.tieneMascota == false), "ID", "Correo");
             return View();
         }
 
@@ -61,10 +61,16 @@ namespace RualesMProgreso1.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(mascota);
+                // Set the foreign key property to the selected Dueno's ID
+                var dueno = await _context.Dueno.FindAsync(mascota.DuenoId);
+                if (dueno != null)
+                {
+                    dueno.tieneMascota = true;
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DuenoId"] = new SelectList(_context.Dueno, "ID", "Correo", mascota.DuenoId);
+            ViewData["DuenoId"] = new SelectList(_context.Dueno.Where(u => u.tieneMascota == false), "ID", "Correo");
             return View(mascota);
         }
 
