@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace RualesMProgreso1.Migrations
 {
     [DbContext(typeof(SQLServerContextRuales))]
-    [Migration("20250501135543_Migracion prueba")]
-    partial class Migracionprueba
+    [Migration("20250501164800_CrearTablasIniciales")]
+    partial class CrearTablasIniciales
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
